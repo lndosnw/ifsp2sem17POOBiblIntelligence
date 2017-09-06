@@ -8,7 +8,6 @@ Como desafio o programa deverá conter permissões por nivel de acesso e tentare
 A melhoria do projeto ocorrerá de acordo com o passar das aulas.
 
 ***************************************************** notas de atualizacao no commit *****************************************************
-*                                                                                                                                        * 
-* 05/09/2017 - Alterações para apresentacao e adequação ao seguintes conceitos : casting, classes, objetos, metodos, encapsulamento,     * * sobrecarga, heranca, polimorfismo, interfaces.                                                                                         *
-*                                                                                                                                        *
+                                                                                                                                          05/09/2017 - Alterações para apresentacao e adequação ao seguintes conceitos : casting, classes, objetos, metodos, encapsulamento,    sobrecarga, heranca, polimorfismo, interfaces.                                                                                         
+                                                                                                                                        
 ******************************************************************************************************************************************
