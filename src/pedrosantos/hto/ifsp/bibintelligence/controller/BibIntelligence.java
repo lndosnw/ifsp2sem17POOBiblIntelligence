@@ -1195,4 +1195,14 @@ public class BibIntelligence {
         return resultado;
     }
     
+    public static Boolean estaRegistrado(Registro reg){
+        Boolean resultado = false;
+        
+        if((reg.getNomeRegistro().equals("") == false) && (reg.getTipoRegistro().equals("") == false)){
+            resultado = true;
+        }   
+        
+        return resultado;
+    }
+    
 }

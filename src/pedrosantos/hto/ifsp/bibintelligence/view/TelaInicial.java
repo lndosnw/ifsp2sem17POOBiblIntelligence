@@ -64,6 +64,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mpConfiguracao = new javax.swing.JMenu();
         mpConfigBD = new javax.swing.JMenuItem();
         mpConfigGerais = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         mpSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -237,6 +238,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
         menuPrincipal.add(mpConfiguracao);
 
+        jMenu1.setText("Registro");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        menuPrincipal.add(jMenu1);
+
         mpSair.setText("Sair");
         mpSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -401,6 +410,12 @@ public class TelaInicial extends javax.swing.JFrame {
         registraBaixa.setVisible(true);
     }//GEN-LAST:event_mpaBaixaActionPerformed
 
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        TelaRegistro telaRegistro = new TelaRegistro();
+        telaRegistro.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
     public void setLogonLogoff(){
         if(BibIntelligence.idUsuarioLogado==0){
             mpaLogonLogoff.setText("Logon");
@@ -500,6 +515,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel lbBemVindo;
     public javax.swing.JLabel lbUsuario;
     private javax.swing.JMenuBar menuPrincipal;

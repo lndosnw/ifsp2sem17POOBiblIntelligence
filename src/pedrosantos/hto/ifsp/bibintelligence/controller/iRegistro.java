@@ -9,6 +9,8 @@ package pedrosantos.hto.ifsp.bibintelligence.controller;
  *
  * @author a1520784
  */
-public class Sender {
-    
+public interface iRegistro {
+     public Boolean Registrar(String nomeReg, String tipoReg, String key);
+     public Boolean Registrar(String nomeReg, String key);
+     public Boolean Registrar(String key);
 }
