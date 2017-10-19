@@ -48,7 +48,9 @@ import pedrosantos.hto.ifsp.view.ListaEditora;
 import pedrosantos.hto.ifsp.view.TelaInicial;
 import pedrosantos.hto.ifsp.view.REUsuarios;*/
 import java.sql.SQLException;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
+import org.apache.commons.mail.EmailException;
 
 
 
@@ -189,12 +191,12 @@ public class BibIntelligence {
         return resultado;
     }
     
-    public static boolean Logar(String usuario,String psenha){
+    public static boolean Logar(String usuario,String psenha) throws MessagingException{
         LogonUsuario logonUsuario = LogonUsuario.getInstancia();
         Boolean resultado=false;
         if(usuario.equals("") || psenha.equals("")){
             JOptionPane.showMessageDialog(logonUsuario, "Login ou Senha inválido.", "Erro !", JOptionPane.ERROR_MESSAGE);
-            resultado = true;//////***//
+            resultado = false;
         }else{
             try {
                 while(Conexao.getResultSet("Select * from usuarios where login = '"+ usuario +"';").next()) {
@@ -216,7 +218,7 @@ public class BibIntelligence {
                         resultado = true;
                     }else{
                         JOptionPane.showMessageDialog(logonUsuario,"Login ou Senha inválidos.","Erro Ao Logar",JOptionPane.ERROR_MESSAGE);
-                        resultado = true;////***/*
+                        resultado = false;
                     }
                 }
             }catch(SQLException e){
@@ -236,6 +238,7 @@ public class BibIntelligence {
             } // fim do bloco try-catch-finally
         }//else do login e senha vazios
         CarregaPermissoes(idUsuarioLogado);
+        Sender.getInstancia().enviar(BibIntelligence.idUsuarioLogado, "Login realizado na sua conta");
         return resultado;
     }
     
@@ -304,7 +307,7 @@ public class BibIntelligence {
     public static Integer VerificaGrupoUsuario(String grupo){
         int idGrupo=-2;
         try{
-		  while(Conexao.getResultSet("SELECT idGrupo FROM gruposeg where gruposeg.nomeGrupo= "+grupo).next()){ 
+		  while(Conexao.getResultSet("SELECT idGrupo FROM gruposeg where gruposeg.nomeGrupo= "+"\""+grupo+"\"").next()){ 
 			idGrupo = Conexao.getRsInt("idGrupo");                        
 		  }
 		  } 
@@ -364,7 +367,7 @@ public class BibIntelligence {
             return id;
     }
     
-    public static boolean CadUsuario(int edit,int pid,String plogin,String psenha,String psenhaconf,String pnome,String pendereco,long ptelefone,int pgrupo,int perros,boolean pbloqueado,boolean pdesativado){
+    public static boolean CadUsuario(int edit,int pid,String plogin,String psenha,String psenhaconf,String pemail,String pnome,String pendereco,long ptelefone,int pgrupo,int perros,boolean pbloqueado,boolean pdesativado){
         CadUsuario cadUsuario = CadUsuario.getInstancia();
         Boolean resultado=false;
         if(edit==0){
@@ -374,7 +377,7 @@ public class BibIntelligence {
             }else{
             try {
                 
-                while(Conexao.getResultSet("SELECT insertUsuario("+BibIntelligence.idUsuarioLogado+",\""+plogin+"\",\""+psenha+"\",\""+pnome+"\",\""+pendereco+"\","+ptelefone+","+pgrupo+") \"resultado\"").next()) {
+                while(Conexao.getResultSet("SELECT insertUsuario("+BibIntelligence.idUsuarioLogado+",\""+plogin+"\",\""+psenha+"\",\""+pemail+"\",\""+pnome+"\",\""+pendereco+"\","+ptelefone+","+pgrupo+") \"resultado\"").next()) {
 					if(Conexao.getRsBoolean("resultado")){
                                             resultado = true;
                                         }else{
@@ -404,7 +407,7 @@ public class BibIntelligence {
             resultado = false;
             }else{
             try {
-                while(Conexao.getResultSet("SELECT editUsuario("+BibIntelligence.idUsuarioLogado+","+pid+",\""+plogin+"\",\""+psenha+"\",\""+pnome+"\",\""+pendereco+"\","+ptelefone+","+pgrupo+") \"resultado\"").next()) {
+                while(Conexao.getResultSet("SELECT editUsuario("+BibIntelligence.idUsuarioLogado+","+pid+",\""+plogin+"\",\""+psenha+"\",\""+pemail+"\",\""+pnome+"\",\""+pendereco+"\","+ptelefone+","+pgrupo+") \"resultado\"").next()) {
 					if(Conexao.getRsBoolean("resultado")){
                                             resultado = true;
                                         }else{

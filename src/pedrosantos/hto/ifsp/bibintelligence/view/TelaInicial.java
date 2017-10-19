@@ -6,8 +6,13 @@
 package pedrosantos.hto.ifsp.bibintelligence.view;
 
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
+import org.apache.commons.mail.EmailException;
 import pedrosantos.hto.ifsp.bibintelligence.controller.BibIntelligence;
+import pedrosantos.hto.ifsp.bibintelligence.controller.Sender;
 
 /**
  *

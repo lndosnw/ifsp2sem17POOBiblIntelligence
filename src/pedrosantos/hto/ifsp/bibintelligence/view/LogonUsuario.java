@@ -10,6 +10,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -58,6 +61,11 @@ public class LogonUsuario extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setLocationByPlatform(true);
         setName("frmAcesso"); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         lbUsuario.setText("Usuário :");
 
@@ -127,14 +135,24 @@ public class LogonUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
-        // TODO add your handling code here:
-        if (BibIntelligence.Logar(tfUsuario.getText(), jpSenha.getText())){
-            
+        try {
+            // TODO add your handling code here:
+            if (BibIntelligence.Logar(tfUsuario.getText(), jpSenha.getText())){
+                btCancelarActionPerformed(null);
+            }else{
+                JOptionPane.showMessageDialog(this,"Login ou Senha inválidos.","Erro Ao Logar",JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (MessagingException ex) {
+            Logger.getLogger(LogonUsuario.class.getName()).log(Level.SEVERE, null, ex);
             btCancelarActionPerformed(null);
-        }else{
-            JOptionPane.showMessageDialog(this,"Login ou Senha inválidos.","Erro Ao Logar",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btOkActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        tfUsuario.setText("");
+        jpSenha.setText("");
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

@@ -73,14 +73,14 @@ public class ListaUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "login", "nome", "endereco", "telefone", "grupo", "erros", "bloqueado", "desativado"
+                "id", "login", "email", "nome", "endereco", "telefone", "grupo", "erros", "bloqueado", "desativado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -234,13 +234,14 @@ public class ListaUsuario extends javax.swing.JFrame {
         if(tblUsuarios.getSelectedRow() != -1){
             cadusuario.usuario = (String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 1);
             cadusuario.idUsuario = BibIntelligence.VerificaID("SELECT idUsuario from usuarios where login= \""+cadusuario.usuario+"\"", "idUsuario",3);
-            cadusuario.nome = (String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 2);
-            cadusuario.endereco = (String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 3);
-            cadusuario.telefone = (long) modelo.getValueAt(tblUsuarios.getSelectedRow(), 4);
-            cadusuario.grupo = BibIntelligence.VerificaGrupoUsuario((String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 5));
-            cadusuario.erros = (int) modelo.getValueAt(tblUsuarios.getSelectedRow(), 6);
-            cadusuario.bloqueado = (boolean) modelo.getValueAt(tblUsuarios.getSelectedRow(), 7);
-            cadusuario.desativado = (boolean) modelo.getValueAt(tblUsuarios.getSelectedRow(), 8);
+            cadusuario.email = (String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 2);
+            cadusuario.nome = (String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 3);
+            cadusuario.endereco = (String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 4);
+            cadusuario.telefone = (long) modelo.getValueAt(tblUsuarios.getSelectedRow(), 5);
+            cadusuario.grupo = BibIntelligence.VerificaGrupoUsuario((String) modelo.getValueAt(tblUsuarios.getSelectedRow(), 6));
+            cadusuario.erros = (int) modelo.getValueAt(tblUsuarios.getSelectedRow(), 7);
+            cadusuario.bloqueado = (boolean) modelo.getValueAt(tblUsuarios.getSelectedRow(), 8);
+            cadusuario.desativado = (boolean) modelo.getValueAt(tblUsuarios.getSelectedRow(), 9);
             cadusuario.setVisible(true);
         }
         else{
@@ -264,7 +265,7 @@ public class ListaUsuario extends javax.swing.JFrame {
                 try{
                     String SQL = "call listaUsuariosDesbloqAtivos";
                     while(Conexao.getResultSet(SQL).next()){
-                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
+                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("email"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
                     }
                 }catch(SQLException ex){
                            System.out.println("SQLException: " + ex.getMessage());
@@ -278,7 +279,7 @@ public class ListaUsuario extends javax.swing.JFrame {
                 try{
                     String SQL = "call listaUsuariosBloqAtivos";
                     while(Conexao.getResultSet(SQL).next()){
-                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
+                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("email"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
                     }
                 }catch(SQLException ex){
                            System.out.println("SQLException: " + ex.getMessage());
@@ -294,7 +295,7 @@ public class ListaUsuario extends javax.swing.JFrame {
                 try{
                     String SQL = "call listaUsuariosDesbloqDesativados";
                     while(Conexao.getResultSet(SQL).next()){
-                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
+                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("email"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
                     }
                 }catch(SQLException ex){
                            System.out.println("SQLException: " + ex.getMessage());
@@ -308,7 +309,7 @@ public class ListaUsuario extends javax.swing.JFrame {
                 try{
                     String SQL = "call listaUsuariosBloqDesativados";
                     while(Conexao.getResultSet(SQL).next()){
-                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
+                        modelo.addRow(new Object[]{Conexao.getRsInt("idUsuario"), Conexao.getRsString("login"), Conexao.getRsString("email"), Conexao.getRsString("nome"), Conexao.getRsString("endereco"), Conexao.getRsLong("telefone"), Conexao.getRsString("grupo"), Conexao.getRsInt("erroLogin"), Conexao.getRsBoolean("bloqueado"), Conexao.getRsBoolean("desativado")});
                     }
                 }catch(SQLException ex){
                            System.out.println("SQLException: " + ex.getMessage());

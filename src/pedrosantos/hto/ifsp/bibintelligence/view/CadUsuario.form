@@ -37,14 +37,16 @@
                           <Component id="lbEndereco" min="-2" max="-2" attributes="0"/>
                           <Component id="lbUsuario" min="-2" max="-2" attributes="0"/>
                           <Component id="lbNome" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbEmail" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="tfUsuario" max="32767" attributes="0"/>
-                          <Component id="tfEndereco" alignment="1" pref="285" max="32767" attributes="0"/>
-                          <Component id="tfNome" alignment="0" pref="285" max="32767" attributes="0"/>
+                          <Component id="tfEndereco" alignment="1" pref="287" max="32767" attributes="0"/>
+                          <Component id="tfNome" alignment="0" pref="287" max="32767" attributes="0"/>
                           <Component id="jfTelefone" alignment="0" max="32767" attributes="0"/>
                           <Component id="cbGrupo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfEmail" alignment="0" pref="287" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -79,6 +81,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfNome" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -180,6 +187,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btResetSenhaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="* Email :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfEmail">
     </Component>
   </SubComponents>
 </Form>

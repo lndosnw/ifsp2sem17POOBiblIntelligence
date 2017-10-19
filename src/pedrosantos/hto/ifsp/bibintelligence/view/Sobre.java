@@ -50,7 +50,7 @@ public class Sobre extends javax.swing.JFrame {
             }
         });
 
-        lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/instituto-federal-de-sao-paulo-oferece-cursos-tecnicos-gratuitos.jpg"))); // NOI18N
+        lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pedrosantos/hto/ifsp/bibintelligence/resources/instituto-federal-de-sao-paulo-oferece-cursos-tecnicos-gratuitos.jpg"))); // NOI18N
 
         jLabel1.setText("BiblIntelligence");
 

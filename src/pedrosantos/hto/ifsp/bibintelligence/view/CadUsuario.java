@@ -25,7 +25,7 @@ public class CadUsuario extends javax.swing.JFrame {
      * Creates new form CadUsuario
      */
     
-    String usuario,nome,endereco;
+    String usuario,nome,endereco,email;
     long telefone;
     int grupo,erros;
     boolean bloqueado,desativado;    
@@ -66,6 +66,8 @@ public class CadUsuario extends javax.swing.JFrame {
         btCancelar = new javax.swing.JButton();
         lbInstrucao = new javax.swing.JLabel();
         btResetSenha = new javax.swing.JButton();
+        lbEmail = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Usuários");
@@ -111,6 +113,8 @@ public class CadUsuario extends javax.swing.JFrame {
             }
         });
 
+        lbEmail.setText("* Email :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,14 +128,16 @@ public class CadUsuario extends javax.swing.JFrame {
                             .addComponent(lbTelefone)
                             .addComponent(lbEndereco)
                             .addComponent(lbUsuario)
-                            .addComponent(lbNome))
+                            .addComponent(lbNome)
+                            .addComponent(lbEmail))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfUsuario)
-                            .addComponent(tfEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                            .addComponent(tfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(tfEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(tfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                             .addComponent(jfTelefone)
-                            .addComponent(cbGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -157,6 +163,10 @@ public class CadUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNome)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbEmail)
+                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +195,7 @@ public class CadUsuario extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         // TODO add your handling code here:
-        if (BibIntelligence.CadUsuario(edit,idUsuario,tfUsuario.getText(),"mudar123","mudar123",tfNome.getText(),tfEndereco.getText(),Long.valueOf(jfTelefone.getText()),cbGrupo.getSelectedIndex(),0,false,false)){
+        if (BibIntelligence.CadUsuario(edit,idUsuario,tfUsuario.getText(),"mudar123","mudar123",tfEmail.getText(),tfNome.getText(),tfEndereco.getText(),Long.valueOf(jfTelefone.getText()),cbGrupo.getSelectedIndex(),0,false,false)){
                 JOptionPane.showMessageDialog(null, "Usuário Cadastrado Com Sucesso !", "Sucesso !", JOptionPane.ERROR_MESSAGE);
             }
         else{
@@ -234,6 +244,7 @@ public class CadUsuario extends javax.swing.JFrame {
 
         if(edit==1){
             tfUsuario.setText(usuario);
+            tfEmail.setText(email);
             tfNome.setText(nome);
             tfEndereco.setText(endereco);
             //combobox grupo
@@ -307,12 +318,14 @@ public class CadUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btSalvar;
     private javax.swing.JComboBox<String> cbGrupo;
     private javax.swing.JFormattedTextField jfTelefone;
+    private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbEndereco;
     private javax.swing.JLabel lbGrupo;
     private javax.swing.JLabel lbInstrucao;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbTelefone;
     private javax.swing.JLabel lbUsuario;
+    private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfUsuario;
