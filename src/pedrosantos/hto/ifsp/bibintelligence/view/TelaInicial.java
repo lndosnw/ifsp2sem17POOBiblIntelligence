@@ -12,7 +12,7 @@ import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import org.apache.commons.mail.EmailException;
 import pedrosantos.hto.ifsp.bibintelligence.controller.BibIntelligence;
-import pedrosantos.hto.ifsp.bibintelligence.controller.Sender;
+import pedrosantos.hto.ifsp.bibintelligence.controller.SenderFacade;
 
 /**
  *

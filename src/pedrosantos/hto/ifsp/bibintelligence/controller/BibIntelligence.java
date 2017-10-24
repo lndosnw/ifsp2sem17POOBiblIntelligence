@@ -238,7 +238,7 @@ public class BibIntelligence {
             } // fim do bloco try-catch-finally
         }//else do login e senha vazios
         CarregaPermissoes(idUsuarioLogado);
-        Sender.getInstancia().enviar(BibIntelligence.idUsuarioLogado, "Login realizado na sua conta");
+        SenderFacade.getInstancia().enviar(BibIntelligence.idUsuarioLogado, "Login realizado na sua conta");
         return resultado;
     }
     
